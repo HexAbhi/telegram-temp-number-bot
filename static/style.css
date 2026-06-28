@@ -1,0 +1,211 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.step {
+    display: none;
+}
+
+.step.active {
+    display: block;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    width: 0%;
+    transition: width 0.5s;
+}
+
+h1, h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    background: white;
+}
+
+.form-control:focus {
+    border-color: #667eea;
+    outline: none;
+}
+
+.btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 10px;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    color: white;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: white;
+}
+
+.btn-secondary {
+    background: #4CAF50;
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+.processing {
+    text-align: center;
+    padding: 20px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+.location-box, .camera-box {
+    text-align: center;
+    padding: 25px;
+    background: #fff3e0;
+    border-radius: 15px;
+    margin: 15px 0;
+}
+
+.location-icon, .camera-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.small {
+    font-size: 12px;
+    color: #999;
+    margin-top: 10px;
+}
+
+.success-icon {
+    font-size: 64px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.number-display {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    background: #f0f0f0;
+    border-radius: 12px;
+    margin: 20px 0;
+    font-family: monospace;
+    letter-spacing: 2px;
+}
+
+.countdown {
+    text-align: center;
+    font-size: 20px;
+    color: #666;
+    margin: 10px 0;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
